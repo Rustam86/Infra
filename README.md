@@ -124,7 +124,7 @@ dependencies:
   - salmon==1.9.0
   - samtools==1.16.1
   - star==2.7.10b
-  - picard
+  - picard==2.18.29
 ```
 To test this env (make a copy) on the same machine, change **name: HW** line to something like **name: HW_test** and run:
 ```
