@@ -66,11 +66,11 @@ A: *Conda is an open source package management system and environment management
 
 Download latest version of conda (miniconda):
 ```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 ```
 Install conda:
 ```
-bash Miniconda3-latest-Linux-x86_64.sh
+Anaconda3-2022.10-Linux-x86_64.sh
 ```
 Create a new virtual environment (named HW):
 ```
@@ -92,15 +92,16 @@ conda config --set channel_priority strict
 ```
 Create *packs.yml* file containing package names and versions:
 ```
-fastqc=0.11.9
-STAR=2.7.10b
-samtools=1.16.1
-#picard=2.27.5
-salmon=commit tag 1.9.0
-bedtools=2.30.0
-multiqc=1.13
+fastqc==0.11.9
+STAR==2.7.10b
+samtools==1.16.1
+salmon==1.9.0
+bedtools==2.30.0
+multiqc==1.13
+picard-2.18.29
 ```
 install packages:
 ```
 conda install --file packs.yml
 ```
+picard version 2.27.5 is not in conda chanells (yet?), but picard==2.18.29 is. Authors may upload (link) new version to bioconda or conda-forge. For our usage we can use older version or get latest from [github](https://github.com/broadinstitute/picard)
