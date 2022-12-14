@@ -64,7 +64,7 @@ A: *Conda is an open source package management system and environment management
 
 ### Anaconda
 
-Download latest version of conda (miniconda):
+Download latest version of conda (Anaconda):
 ```
 wget https://repo.anaconda.com/archive/Anaconda3-2022.10-Linux-x86_64.sh
 ```
@@ -98,7 +98,7 @@ samtools==1.16.1
 salmon==1.9.0
 bedtools==2.30.0
 multiqc==1.13
-picard-2.18.29
+picard==2.18.29
 ```
 install packages:
 ```
