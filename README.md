@@ -100,8 +100,40 @@ bedtools==2.30.0
 multiqc==1.13
 picard==2.18.29
 ```
-install packages:
+Install packages:
 ```
 conda install --file packs.yml
 ```
-picard version 2.27.5 is not in conda chanells (yet?), but picard==2.18.29 is. Authors may upload (link) new version to bioconda or conda-forge. For our usage we can use older version or get latest from [github](https://github.com/broadinstitute/picard)
+picard version 2.27.5 is not in conda chanells (yet?), but picard==2.18.29 is. Authors may upload (link) new version to bioconda or conda-forge. For our usage we can use older version or get latest from [Broad Institute's github](https://github.com/broadinstitute/picard)
+
+Create environment.yml:
+```
+conda env export --from-history > environment.yml
+```
+The content of the file should look like this:
+```
+name: HW
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - multiqc==1.13
+  - fastqc==0.11.9
+  - bedtools==2.30.0
+  - salmon==1.9.0
+  - samtools==1.16.1
+  - star==2.7.10b
+  - picard
+```
+To test this env (make a copy) on the same machine, change **name: HW** line to something like **name: HW_test** and run:
+```
+conda env create -f environment.yml
+```
+
+### Docker
+
+```console
+foo@bar:~$ whoami
+foo
+```
