@@ -169,7 +169,6 @@ Make a Doclerfile, containing:
 FROM ubuntu:22.04
 
 # Install base utilities
-
 RUN apt-get update
 RUN apt-get install build-essential -y
 RUN apt-get install -y wget
@@ -201,15 +200,14 @@ Run bio image:
 ```
 sudo docker run --rm -it bio
 ```
-After using hadolint Docker imagege looks like this (added versions and --no-install-recommends):
+After using hadolint Docker image looks like this (added versions and --no-install-recommends):
 ```
 FROM ubuntu:22.04
 
 # Install base utilities
-
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y build-essential=12.9ubuntu3
-RUN apt-get install --no-install-recommends -y wget=1.21.2
+RUN apt-get install --no-install-recommends build-essential=12.9ubuntu3 -y
+RUN apt-get install --no-install-recommends -y wget=1.21.2-2ubuntu1
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -228,8 +226,14 @@ RUN conda config --set channel_priority strict
 
 # Install packages
 RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
+
 ```
-Still one warning: "Delete the apt-get lists after installing something", no idea how to fix because all it suggest to do was already done:
+Use to check the package version:
+```
+apt-cache policy PACKAGE
+```
+
+Still one warning: "Delete the apt-get lists after installing something", no idea how to fix it because all it suggests doing was already done:
 ```
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
