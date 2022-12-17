@@ -164,6 +164,73 @@ Install Docker Engine, containerd, and Docker Compose (the latest version):
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
-Make a Doclerfile:
+Make a Doclerfile, containing:
+```
+FROM ubuntu:22.04
 
+# Install base utilities
 
+RUN apt-get update
+RUN apt-get install build-essential -y
+RUN apt-get install -y wget
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install miniconda
+ENV CONDA_DIR /opt/conda
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+RUN /bin/bash ~/miniconda.sh -b -p /opt/conda
+
+# Put conda in path
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+# Add conda chanells
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --set channel_priority strict
+
+# Install packages
+RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
+```
+
+To buil an image from the Docker file run (Dockerfile is inside Bio folder):
+```
+sudo docker build Bio/ -t bio
+```
+Run bio image:
+```
+sudo docker run --rm -it bio
+```
+After using hadolint Docker imagege looks like this (added versions and --no-install-recommends):
+```
+FROM ubuntu:22.04
+
+# Install base utilities
+
+RUN apt-get update
+RUN apt-get install --no-install-recommends -y build-essential=12.9ubuntu3
+RUN apt-get install --no-install-recommends -y wget=1.21.2
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install miniconda
+ENV CONDA_DIR /opt/conda
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+RUN /bin/bash ~/miniconda.sh -b -p /opt/conda
+
+# Put conda in path
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+# Add conda chanells
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --set channel_priority strict
+
+# Install packages
+RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
+```
+Still one warning: "Delete the apt-get lists after installing something", no idea how to fix because all it suggest to do was already done:
+```
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+```
