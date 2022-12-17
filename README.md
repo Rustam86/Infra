@@ -238,3 +238,37 @@ Still one warning: "Delete the apt-get lists after installing something", no ide
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 ```
+Final version of Dockerfile:
+```
+FROM ubuntu:22.04
+
+# Labels
+LABEL maintainer="rustam@heydarov.ru"
+LABEL build_date="December 2022"
+LABEL description='Tools for excellent RNA-seq analysis pipeline'
+LABEL url='https://github.com/Rustam86/Infra#dependencies-management'
+
+# Install base utilities
+RUN apt-get update
+RUN apt-get install build-essential=12.9ubuntu3 -y
+RUN apt-get install -y wget=1.21.2-2ubuntu1
+RUN apt-get clean
+RUN rm -rf /var/lib/apt/lists/*
+
+# Install miniconda
+ENV CONDA_DIR /opt/conda
+RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh
+RUN /bin/bash ~/miniconda.sh -b -p /opt/conda
+
+# Put conda in path
+ENV PATH=$CONDA_DIR/bin:$PATH
+
+# Add conda chanells
+RUN conda config --add channels bioconda
+RUN conda config --add channels conda-forge
+RUN conda config --set channel_priority strict
+
+# Install packages
+RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
+```
+"--no-install-recommends" flags were removed becouse of "The command '/bin/sh -c wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh' returned a non-zero code: 5" errore
