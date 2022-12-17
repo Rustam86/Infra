@@ -163,3 +163,7 @@ Install Docker Engine, containerd, and Docker Compose (the latest version):
 ```
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
+
+Make a Doclerfile:
+
+
