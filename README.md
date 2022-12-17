@@ -238,7 +238,7 @@ Still one warning: "Delete the apt-get lists after installing something", no ide
 RUN apt-get clean
 RUN rm -rf /var/lib/apt/lists/*
 ```
-Final version of Dockerfile:
+Final version of Dockerfile with labels:
 ```
 FROM ubuntu:22.04
 
@@ -271,4 +271,4 @@ RUN conda config --set channel_priority strict
 # Install packages
 RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
 ```
-"--no-install-recommends" flags were removed becouse of "The command '/bin/sh -c wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh' returned a non-zero code: 5" errore
+"--no-install-recommends" flags were removed becouse of "The command '/bin/sh -c wget --quiet "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O ~/miniconda.sh' returned a non-zero code: 5" error
