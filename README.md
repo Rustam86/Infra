@@ -26,7 +26,7 @@ Generate SSH key pair:
 ```
 ssh-keygen
 ```
-Create virtual machine (disk space: 15 GB, RAM: 8000 GB, OS: ubuntu 22.04). Use your favorite provider. Don't use vk cloud if you don't want to pay (charges 500 rub). Use public key (id_rsa.pub) when creating VM.
+Create virtual machine (disk space: 15 GB, RAM: 8 GB, OS: ubuntu 22.04). Use your favorite provider. Don't use vk cloud if you don't want to pay (charges 500 rub). Use public key (id_rsa.pub) when creating VM.
 
 Connect to VM:
 ```
@@ -36,7 +36,6 @@ Dont't forget to update and upgrade:
 ```
 sudo apt update && sudo apt upgrade -y
 ```
-
 Download the latest human genome assembly (GRCh38) from the Ensemble FTP server:
 ```
 wget https://ftp.ensembl.org/pub/release-108/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
@@ -102,3 +101,19 @@ bedtools sort -i NR3C1.bed > NR3C1.sorted.bed
 bedtools sort -i CTCF.bed > CTCF.sorted.bed
 bedtools sort -i EP300.bed > EP300.sorted.bed
 ```
+bgzip and tabix sorted BED files:
+```
+bgzip ATAC.sorted.bed
+tabix ATAC.sorted.bed.gz
+
+bgzip NR3C1.sorted.bed
+tabix NR3C1.sorted.bed.gz
+
+bgzip CTCF.sorted.bed
+tabix CTCF.sorted.bed.gz
+
+bgzip EP300.sorted.bed
+tabix EP300.sorted.bed.gz
+```
+
+tabix Homo_sapiens.GRCh38.108.sorted.gff3.gz
