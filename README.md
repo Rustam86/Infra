@@ -32,27 +32,73 @@ Connect to VM:
 ```
 ssh -i <../id_rsa.pub> ubuntu@109.120.189.181
 ```
+Dont't forget to update and upgrade:
+```
+sudo apt update && sudo apt upgrade -y
+```
 
 Download the latest human genome assembly (GRCh38) from the Ensemble FTP server:
 ```
 wget https://ftp.ensembl.org/pub/release-108/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 wget https://ftp.ensembl.org/pub/release-108/gff3/homo_sapiens/Homo_sapiens.GRCh38.108.gff3.gz
 ```
-Download SAMtools and htslib:
+Unzip files:
 ```
-wget https://github.com/samtools/samtools/releases/download/1.16.1/samtools-1.16.1.tar.bz2
-wget https://github.com/samtools/htslib/releases/download/1.16/htslib-1.16.tar.bz2
+gzip -dk Homo_sapiens.GRCh38.108.gff3.gz
+gzip -dk Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
 ```
-Uzip samtools-1.16.1.tar.bz2 and htslib-1.16.tar.bz2
+Install samtools and tabix:
 ```
-bzip2 -dk samtools-1.16.1.tar.bz2
-bzip2 -dk htslib-1.16.tar.bz2
+sudo apt install samtools
+sudo apt install tabix
 ```
-
-Build SAMtools:
+Index the fasta using samtools:
 ```
-cd samtools-1.x    # and similarly for bcftools and htslib
-./configure --prefix=/where/to/install
-make
-make install
+samtools faidx Homo_sapiens.GRCh38.dna.primary_assembly.fa
+```
+Install GenomeTools:
+```
+sudo apt install genometools
+```
+Sort gff3:
+```
+gt gff3 -sortlines -tidy -retainids Homo_sapiens.GRCh38.108.gff3 > Homo_sapiens.GRCh38.108.sorted.gff3
+```
+bgzip and tabix sorted gff3:
+```
+bgzip Homo_sapiens.GRCh38.108.sorted.gff3
+tabix Homo_sapiens.GRCh38.108.sorted.gff3.gz
+```
+Dowload ATAC-seq and ChiP-seqs from ENCODE:
+```
+wget -O ATAC.bigBed "https://www.encodeproject.org/files/ENCFF274FAH/@@download/ENCFF274FAH.bigBed"
+wget -O NR3C1.bigBed "https://www.encodeproject.org/files/ENCFF536FKB/@@download/ENCFF536FKB.bigBed"
+wget -O CTCF.bigBed "https://www.encodeproject.org/files/ENCFF417LCP/@@download/ENCFF417LCP.bigBed"
+wget -O EP300.bigBed "https://www.encodeproject.org/files/ENCFF642COK/@@download/ENCFF642COK.bigBed"
+```
+Dowload bigBed to BED converter:
+```
+wget http://hgdownload.cse.ucsc.edu/admin/exe/linux.x86_64/bigBedToBed
+```
+Give permisions:
+```
+chmod a+x bigBedToBed
+```
+Convert to BED:
+```
+./bigBedToBed ATAC.bigBed ATAC.bed
+./bigBedToBed NR3C1.bigBed NR3C1.bed
+./bigBedToBed CTCF.bigBed CTCF.bed
+./bigBedToBed EP300.bigBed EP300.bed
+```
+Install Bebtools:
+```
+sudo apt install -y bedtools
+```
+Sort BED files:
+```
+bedtools sort -i ATAC.bed > ATAC.sorted.bed
+bedtools sort -i NR3C1.bed > NR3C1.sorted.bed
+bedtools sort -i CTCF.bed > CTCF.sorted.bed
+bedtools sort -i EP300.bed > EP300.sorted.bed
 ```
