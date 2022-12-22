@@ -347,4 +347,4 @@ RUN rm ./*zip \
 && rm ./*tar.gz \
 && apt-get autoremove \
 && apt-get clean \
-&& RUN rm -rf /var/lib/apt/lists/*
+&& rm -rf /var/lib/apt/lists/*
