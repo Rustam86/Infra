@@ -128,3 +128,30 @@ cd /mnt/JBrowse/
 unzip jbrowse-web-v2.3.2.zip
 rm jbrowse-web-v2.3.2.zip
 ```
+Install nginx:
+```
+sudo apt install nginx
+```
+Modify /etc/nginx/nginx.conf to contain the folowing:
+```
+sudo nano /etc/nginx/nginx.conf
+```
+> http {
+# Don't touch other options!
+# ........
+# ........
+
+# Comment this line(!):
+# include /etc/nginx/sites-enabled/*;
+
+# Add this:
+server {
+  listen 80 default_server;
+  index index.html;
+  server_name _;
+
+  location /jbrowse/ {
+    alias /mnt/JBrowse/;    
+  }
+}
+}
