@@ -22,7 +22,7 @@ A:
 - Consistency
 > Utilizing a platform that works the same way across multiple environments eliminates so much stress. Your entire team is working in the same way, regardless of the server, machine or operating system they are using. There’s no back-and-forth between staff working through platform issues; simply create images that will transform into containers when deployed – on any device.
 - Automation
-> There are so many tasks that, as a developer, can become repetitive and monotonous when done manually. Docker containers allow you to schedule a range of tasks to occur when they are needed, without manual intervention from a human being. This saves time, effort, and lightens the workload for developers.
+> Docker containers allow you to schedule a range of tasks to occur when they are needed, without manual intervention from a human being. This saves time, effort, and lightens the workload for developers.
 - Stability
 > Docker is based on Linux and, as such, has the Linux kernel in every container, regardless of the system it is running on. In the past, this may have caused some minor stability issues when running the containers on Mac or Windows systems. These days, even though Docker updates frequently (see below), the environment remains stable on any system or device. There’s no need to suddenly roll-back to an earlier update or panic because of unforeseen compatibility issues.
 - Saves Space
@@ -31,9 +31,9 @@ A:
 *Disadvantages:*
 
 - Advances Quickly
-> This sounds like a good thing, right? Well, for the most part, it is. Docker is improving all the time, making app development and deployment slicker and more efficient. Why this is sometimes a problem is because the associated documentation doesn’t always update quite as quickly as the technology itself. This can leave developers hunting for information on certain specifics, particularly within the abstract layers when using Mac or Windows.
+> Docker is improving all the time, making app development and deployment slicker and more efficient. Why this is sometimes a problem is because the associated documentation doesn’t always update quite as quickly as the technology itself. This can leave developers hunting for information on certain specifics, particularly within the abstract layers when using Mac or Windows.
 - Learning Curve
-> Some developers find that switching to Docker containers can have quite a steep learning curve. Even those that are thoroughly familiar with VM infrastructure can find some of the Docker concepts challenging to get to grips with. That’s why working with a user-friendly container-based tool can be the key to making the most out of the Docker environment.
+> Switching to Docker containers can have quite a steep learning curve. 
 
 Q: *Explain how Docker works: what are Dockerfiles, how are containers created, and how are they run and destroyed?*
 
