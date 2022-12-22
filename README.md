@@ -4,7 +4,9 @@
 
 **Q**: ***What is Docker, and how it differs from dependencies management systems? From virtual machines?***
 
-A: *Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers.*
+A: *Docker is a set of platform as a service (PaaS) products that use OS-level virtualization to deliver software in packages called containers and dependency management systems are software for identifying, resolving, and patching dependencies for other software.
+
+*
 
 | Differences  | Docker  |  Virtual Machine |
 |---|---|---|
@@ -13,7 +15,7 @@ A: *Docker is a set of platform as a service (PaaS) products that use OS-level v
 |  Portability | With docker containers, users can create an application and store it into a container image. Then, he/she can run it across any host environment. Docker container is smaller than VMs, because of which the process of transferring files on the host’s filesystem is easier  |  It has known portability issues. VMs don’t have a central hub and it requires more memory space to store data. While transferring files, VMs should have a copy of the OS and its dependencies because of which image size is increased and becomes a tedious process to share data |
 |  Speed |  The application in Docker containers starts with no delay since the OS is already up and running. These containers were basically designed to save time in the deployment process of an application |  It takes a much longer time than it takes for a container to run applications. To deploy a single application, Virtual Machines need to start the entire OS, which would cause a full boot process |
 
-**Q**: ***What are the advantages and disadvantages of using containers over other approaches?*
+**Q**: ***What are the advantages and disadvantages of using containers over other approaches?***
 
 A: 
 
@@ -35,11 +37,11 @@ A:
 - Learning Curve
 > Switching to Docker containers can have quite a steep learning curve. 
 
-**Q**: ***Explain how Docker works: what are Dockerfiles, how are containers created, and how are they run and destroyed?*
+**Q**: ***Explain how Docker works: what are Dockerfiles, how are containers created, and how are they run and destroyed?***
 
-A: *The Docker Engine is the underlying technology that handles the tasks and workflows involved in building container-based applications. The engine creates a server-side daemon process that hosts images, containers, networks and storage volumes. The daemon also provides a client-side command-line interface (CLI) for users to interact with the daemon through the Docker application programming interface. Containers created by Docker are called Dockerfiles. Docker Compose files define the composition of components in a Docker container.
+A: *The Docker Engine is the underlying technology that handles the tasks and workflows involved in building container-based applications. The engine creates a server-side daemon process that hosts images, containers, networks and storage volumes. The daemon also provides a client-side command-line interface (CLI) for users to interact with the daemon through the Docker application programming interface. Containers created by Docker are called Dockerfiles. Docker Compose files define the composition of components in a Docker container.*
 
-**Q**: ***Name and describe at least one Docker competitor (i.e., a tool based on the same containerization technology).*
+**Q**: ***Name and describe at least one Docker competitor (i.e., a tool based on the same containerization technology).***
 
 A: 
 - *LXC (Linux)*
@@ -56,9 +58,11 @@ Equally, its command-line interface (CLI) commands are practically identical to 
 Although Docker and Podman CLI commands are similar, knowing how to tell the difference between the two will help you when working with them behind the scenes. Docker follows the client/server model, using a daemon to manage all containers under its control. However, Podman, like rkt and LXC, functions without a central daemon. This can potentially improve the resilience of any given container by eliminating the possibility of a single point of failure (SPOF). In other words, if your daemon goes down, you’ll lose control over your containers. By contrast, in Podman, containers are self-sufficient, fully isolated environments, which can managed independent of one another.
 Further, where Docker gives root permission to the container user by default, non-root access is standard in Podman.
 
-**Q**: ***What is conda? How it differs from apt, yarn, and others?*
+**Q**: ***What is conda? How it differs from apt, yarn, and others?***
 
-A: *Conda is an open source package management system and environment management system that runs on Windows, macOS, Linux and z/OS. Conda quickly installs, runs and updates packages and their dependencies. Conda easily creates, saves, loads and switches between environments on your local computer. It was created for Python programs, but it can package and distribute software for any language.*
+A: *Conda is an open source package management system and environment management system that runs on Windows, macOS, Linux and z/OS. Conda quickly installs, runs and updates packages and their dependencies. Conda easily creates, saves, loads and switches between environments on your local computer. It was created for Python programs, but it can package and distribute software for any language.
+The main difference between conda and apt, yarn, and (maybe) others is that conda provides not only dependency management, but also virtualisation, allowing to run different versions of the same software on one OS*
+
 
 ## Problem
 
