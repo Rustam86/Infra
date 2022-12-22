@@ -276,3 +276,75 @@ RUN conda config --set channel_priority strict
 RUN conda install fastqc==0.11.9 STAR==2.7.10b samtools==1.16.1 salmon==1.9.0 bedtools==2.30.0 multiqc==1.13 picard==2.18.29
 ```
 "--no-install-recommends" flags were removed because of "The command '/bin/sh -c wget --quiet "https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh" -O ~/miniconda.sh' returned a non-zero code: 5" error
+
+
+Second final version of Dockerfile (you know why it here):
+```
+FROM ubuntu:22.04
+
+# Labels
+LABEL maintainer="rustam@heydarov.ru"
+LABEL build_date="December 2022"
+LABEL description='Tools for excellent RNA-seq analysis pipeline'
+LABEL url='https://github.com/Rustam86/Infra#dependencies-management'
+
+# Install base utilities
+RUN apt-get update \
+&& RUN apt-get install build-essential=12.9ubuntu3 -y \
+&& RUN apt-get install -y wget=1.21.2-2ubuntu1 \
+&& apt-get install unzip \
+&& apt-get -y install perl \
+&& apt-get -y install openjdk-11-jdk xvfb \
+&& apt-get -y install python3-pip \
+&& apt-get -y install libgomp1 \
+&& apt-get -y install libtbb12 \
+&& touch /.bashrc
+
+# Install packages
+
+# FastQC==0.11.9
+RUN wget https://www.bioinformatics.babraham.ac.uk/projects/fastqc/fastqc_v0.11.9.zip \
+&& unzip fastqc_v0.11.9.zip \
+&& chmod a+x /FastQC/fastqc \
+&& echo 'alias fastqc="/FastQC/fastqc"' >> /.bashrc
+
+# STAR==2.7.10b
+RUN wget https://github.com/alexdobin/STAR/releases/download/2.7.10b/STAR_2.7.10b.zip \
+&& unzip ./STAR_2.7.10b.zip \
+&& chmod a+x ./STAR_2.7.10b/Linux_x86_64_static/STAR \
+&& mv ./STAR_2.7.10b/Linux_x86_64_static/STAR /bin/STAR \
+&& rm -r ./STAR_2.7.10b
+
+# samtools==1.16.1
+RUN wget https://github.com/samtools/samtools/archive/refs/tags/1.16.1.zip -O ./samtools-1.16.1.zip \
+&& unzip ./samtools-1.16.1.zip \
+&& mv ./samtools-1.16.1/misc /samtools\
+&& rm -r ./samtools-1.16.1 \
+&& echo 'alias samtools="/samtools/samtools.pl"' >> /.bashrc
+
+# picard==2.27.5
+RUN wget https://github.com/broadinstitute/picard/releases/download/2.27.5/picard.jar -O /bin/picard.jar \
+&& chmod a+x /bin/picard.jar \
+&& echo 'alias picard="java -jar /bin/picard.jar"' >> /.bashrc
+
+# bedtools==2.30.0
+RUN wget https://github.com/arq5x/bedtools2/releases/download/v2.30.0/bedtools.static.binary -O /bin/bedtools.static.binary \
+&& chmod a+x /bin/bedtools.static.binary\
+&& echo 'alias bedtools="/bin/bedtools.static.binary"' >> /.bashrc
+
+# MultiQC==1.13
+RUN pip install multiqc==1.13
+
+# salmon==1.9.0
+RUN wget https://github.com/COMBINE-lab/salmon/releases/download/v1.9.0/salmon-1.9.0_linux_x86_64.tar.gz \
+&& tar -zxvf ./salmon-1.9.0_linux_x86_64.tar.gz \
+&& chmod a+x ./salmon-1.9.0_linux_x86_64/bin/salmon \
+&& mv ./salmon-1.9.0_linux_x86_64/bin/salmon /bin/salmon \
+&& rm -r ./salmon-1.9.0_linux_x86_64 
+
+# Cleanup
+RUN rm ./*zip \
+&& rm ./*tar.gz \
+&& apt-get autoremove \
+&& apt-get clean \
+&& RUN rm -rf /var/lib/apt/lists/*
