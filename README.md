@@ -115,5 +115,16 @@ tabix CTCF.sorted.bed.gz
 bgzip EP300.sorted.bed
 tabix EP300.sorted.bed.gz
 ```
-
-tabix Homo_sapiens.GRCh38.108.sorted.gff3.gz
+Download JBrowse Web:
+```
+wget https://github.com/GMOD/jbrowse-components/releases/download/v2.3.2/jbrowse-web-v2.3.2.zip
+```
+Create repository  /mnt/JBrowse/ move jbrowse-web-v2.3.2.zip unzip / cleanup:
+```
+sudo mkdir /mnt/JBrowse/
+sudo chmod a+rwx /mnt/JBrowse/
+mv jbrowse-web-v2.3.2.zip /mnt/JBrowse/jbrowse-web-v2.3.2.zip
+cd /mnt/JBrowse/
+unzip jbrowse-web-v2.3.2.zip
+rm jbrowse-web-v2.3.2.zip
+```
