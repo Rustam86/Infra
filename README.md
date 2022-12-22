@@ -290,8 +290,8 @@ LABEL url='https://github.com/Rustam86/Infra#dependencies-management'
 
 # Install base utilities
 RUN apt-get update \
-&& RUN apt-get install build-essential=12.9ubuntu3 -y \
-&& RUN apt-get install -y wget=1.21.2-2ubuntu1 \
+&& apt-get install build-essential=12.9ubuntu3 -y \
+&& apt-get install -y wget=1.21.2-2ubuntu1 \
 && apt-get install unzip \
 && apt-get -y install perl \
 && apt-get -y install openjdk-11-jdk xvfb \
