@@ -25,9 +25,13 @@ A: *IP address - an Internet Protocol address is a numerical label such as 109.1
 *To put it briefly:*
 
 -Browser looks up IP address for the domain.
+
 -Browser initiates TCP connection with the server
+
 -Browser sends the HTTP request to the server.
+
 -Server processes request and sends back a response.
+
 -Browser renders the content.
 
 **Q**: ***What is Nginx? How does it work on the high level? List several alternative web servers.***
@@ -39,8 +43,11 @@ A: *Nginx is a web server that can also be used as a reverse proxy, load balance
 *Alternative web servers*:
 
 -Apache HTTP Server
+
 -LiteSpeed Web Server
+
 -Microsoft-IIS
+
 -CentOS Stream
 
 **Q**: ***What is SSH, and for what is it typically used? Explain two ways to authenticate in an SSH server in detail.***
