@@ -128,6 +128,20 @@ cd /mnt/JBrowse/
 unzip jbrowse-web-v2.3.2.zip
 rm jbrowse-web-v2.3.2.zip
 ```
+Install JBrowse web prerequisites (node.js):
+```
+cd ~
+curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+sudo bash /tmp/nodesource_setup.sh
+sudo apt install nodejs
+```
+Not figured better way to install jbrowse cli:
+```
+sudo apt install npm
+npm install -g @jbrowse/cli
+```
+
+
 Install nginx:
 ```
 sudo apt install nginx
@@ -165,7 +179,7 @@ sudo nginx -s reload
 Add files (BED & FASTA & GFF3) to the genome browser
 ```
 sudo jbrowse add-assembly Homo_sapiens.GRCh38.dna.primary_assembly.fa --load copy --out /mnt/JBrowse/
-sudo jbrowse add-track Homo_sapiens.GRCh38.108.sorted.gff3.gz --out /mnt/JBrowse/
+sudo jbrowse add-track Homo_sapiens.GRCh38.108.sorted.gff3.gz --load copy --out /mnt/JBrowse/
 sudo jbrowse add-track ATAC.sorted.bed.gz --load copy --out /mnt/JBrowse/
 sudo jbrowse add-track CTCF.sorted.bed.gz --load copy --out /mnt/JBrowse/
 sudo jbrowse add-track EP300.sorted.bed.gz --load copy --out /mnt/JBrowse/
