@@ -156,3 +156,22 @@ sudo nano /etc/nginx/nginx.conf
       }
     }
     }
+
+Restart nginx:
+```
+sudo nginx -s reload
+```
+
+Add files (BED & FASTA & GFF3) to the genome browser
+```
+sudo jbrowse add-assembly Homo_sapiens.GRCh38.dna.primary_assembly.fa --load copy --out /mnt/JBrowse/
+sudo jbrowse add-track Homo_sapiens.GRCh38.108.sorted.gff3.gz --out /mnt/JBrowse/
+sudo jbrowse add-track ATAC.sorted.bed.gz --load copy --out /mnt/JBrowse/
+sudo jbrowse add-track CTCF.sorted.bed.gz --load copy --out /mnt/JBrowse/
+sudo jbrowse add-track EP300.sorted.bed.gz --load copy --out /mnt/JBrowse/
+sudo jbrowse add-track NR3C1.sorted.bed.gz --load copy --out /mnt/JBrowse/
+```
+
+
+
+http://109.120.189.181/jbrowse/
