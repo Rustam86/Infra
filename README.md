@@ -4,15 +4,31 @@
 
 **Q**: ***What are computer ports on a high level? How many ports are there on a typical computer?***
 
-A: * *
+A: *Port is a virtual interface for network connections. There are 65,535 ports on typical computer*
 
 **Q**: ***What is the difference between http, https, ssh, and other protocols? In what sense are they similar? Name default ports for several data transfer protocols.***
 
-A: * *
+A: *HTTP means HyperText Transfer Protocol. HTTP is the underlying protocol used by the World Wide Web and this protocol defines how messages are formatted and transmitted, and what actions Web servers and browsers should take in response to various commands. It uses port 80 by default.*
+
+*HTTPS uses TLS -Transport Level Security (SSL - Secure Sockets Layer) to encrypt normal HTTP requests and responses, and to digitally sign those requests and responses. As a result, HTTPS is far more secure than HTTP. HTTPS uses port 443 by default.*
+
+*SSH means “Secure Shell”. It has a built-in username/password authentication system to establish a connection. It uses Port 22 to perform the negotiation or authentication process for connection. Authentication of the remote system is done by the use of public-key cryptography and if necessary, it allows the remote computer to authenticate users.*
 
 **Q**: ***Explain briefly: (1) what is IP, (2) what IPs are called 'white'/public, (3) and what happens when you enter 'google.com' into the web browser.***
 
-A: * *
+A: *IP address - an Internet Protocol address is a numerical label such as 109.120.189.181 that is connected to a computer network that uses the Internet Protocol for communication*
+
+*A public IP address is an IP address that can be accessed directly over the internet and is assigned to your network router by your internet service provider*
+
+*When you enter 'google.com' into the web browser [many things happen](https://github.com/alex/what-happens-when). 
+*To put it briefly:*
+
+-Browser looks up IP address for the domain.
+-Browser initiates TCP connection with the server
+-Browser sends the HTTP request to the server.
+-Server processes request and sends back a response.
+-Browser renders the content.
+
 **Q**: ***What is Nginx? How does it work on the high level? List several alternative web servers.***
 
 A: * *
@@ -141,7 +157,6 @@ sudo apt install npm
 npm install -g @jbrowse/cli
 ```
 
-
 Install nginx:
 ```
 sudo apt install nginx
@@ -187,5 +202,6 @@ sudo jbrowse add-track NR3C1.sorted.bed.gz --load copy --out /mnt/JBrowse/
 ```
 
 
+Spend over 8 hours still not working
 
 http://109.120.189.181/jbrowse/
