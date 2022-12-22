@@ -2,21 +2,21 @@
 
 ## Theory
 
-Q: *What are computer ports on a high level? How many ports are there on a typical computer?*
+**Q**: ***What are computer ports on a high level? How many ports are there on a typical computer?***
 
 A: * *
 
-Q: *What is the difference between http, https, ssh, and other protocols? In what sense are they similar? Name default ports for several data transfer protocols.*
+**Q**: ***What is the difference between http, https, ssh, and other protocols? In what sense are they similar? Name default ports for several data transfer protocols.*
 
 A: * *
 
-Q: *Explain briefly: (1) what is IP, (2) what IPs are called 'white'/public, (3) and what happens when you enter 'google.com' into the web browser.*
+**Q**: ***Explain briefly: (1) what is IP, (2) what IPs are called 'white'/public, (3) and what happens when you enter 'google.com' into the web browser.*
 
 A: * *
-Q: *What is Nginx? How does it work on the high level? List several alternative web servers.*
+**Q**: ***What is Nginx? How does it work on the high level? List several alternative web servers.*
 
 A: * *
-Q: *What is SSH, and for what is it typically used? Explain two ways to authenticate in an SSH server in detail.*
+**Q**: ***What is SSH, and for what is it typically used? Explain two ways to authenticate in an SSH server in detail.*
 
 A: * *
 
