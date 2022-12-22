@@ -218,8 +218,10 @@ sudo jbrowse add-track CTCF.sorted.bed.gz --load copy --out /mnt/JBrowse/
 sudo jbrowse add-track EP300.sorted.bed.gz --load copy --out /mnt/JBrowse/
 sudo jbrowse add-track NR3C1.sorted.bed.gz --load copy --out /mnt/JBrowse/
 ```
-
-
-Spend over 8 hours still not working
+Make a text-indexing file for any given track(s):
+```
+cd /mnt/JBrowse/
+jbrowse text-index
+```
 
 http://109.120.189.181/jbrowse/
