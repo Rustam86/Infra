@@ -20,7 +20,8 @@ A: *IP address - an Internet Protocol address is a numerical label such as 109.1
 
 *A public IP address is an IP address that can be accessed directly over the internet and is assigned to your network router by your internet service provider*
 
-*When you enter 'google.com' into the web browser [many things happen](https://github.com/alex/what-happens-when). 
+*When you enter 'google.com' into the web browser [many things happen](https://github.com/alex/what-happens-when).*
+
 *To put it briefly:*
 
 -Browser looks up IP address for the domain.
@@ -31,10 +32,20 @@ A: *IP address - an Internet Protocol address is a numerical label such as 109.1
 
 **Q**: ***What is Nginx? How does it work on the high level? List several alternative web servers.***
 
-A: * *
+A: *Nginx is a web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache.*
+
+*Nginx splits each user request into several small ones, thus simplifying the processing of each. After processing, each connection is assembled in one virtual container to transform into a single initial request, and then sent to the user. One connection can simultaneously process up to 1024 end-user requests. To reduce the load on RAM, the web server uses a dedicated memory segment called a "pool". It is dynamic and expands as the length of the request increases. As an alternative, pound, ha proxy, websockets, yaws are given*
+
+*Alternative web servers*:
+
+-Apache HTTP Server
+-LiteSpeed Web Server
+-Microsoft-IIS
+-CentOS Stream
+
 **Q**: ***What is SSH, and for what is it typically used? Explain two ways to authenticate in an SSH server in detail.***
 
-A: * *
+A: *SSH or Secure Shell is a network communication protocol that enables two computers to communicate and share data. An inherent feature of ssh is that the communication between the two computers is encrypted meaning that it is suitable for use on insecure networks. SSH is often used to "login" and perform operations on remote computers but it may also be used for transferring data.*
 
 ## Remote Server
 
