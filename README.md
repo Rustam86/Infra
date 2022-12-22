@@ -221,7 +221,7 @@ sudo jbrowse add-track NR3C1.sorted.bed.gz --load copy --out /mnt/JBrowse/
 Make a text-indexing file for any given track(s):
 ```
 cd /mnt/JBrowse/
-jbrowse text-index
+sudo jbrowse text-index
 ```
 
 http://109.120.189.181/jbrowse/
