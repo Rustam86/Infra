@@ -223,5 +223,6 @@ Make a text-indexing file for any given track(s):
 cd /mnt/JBrowse/
 sudo jbrowse text-index
 ```
+Link:
 
-http://109.120.189.181/jbrowse/
+http://109.120.189.181/jbrowse/?session=share-v3nAv9tyHL&password=eJjBS
